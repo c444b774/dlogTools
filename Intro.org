@@ -1,0 +1,47 @@
+# Introduction
+
+* Structure+File formats:
+  - Dlog: 
+    - Default keysight Output. 
+    - Composed by a XML followed by a binary
+    - Binary composed by a long int (NUM) indicating the total of values captured plus NUM values in 32bit float 
+    - All stored using using big endian
+  - Elog:
+    - Dlog + unknown zip
+    - unzip filename.elog 
+  - bare_csv: 
+    - Name used on this scope to represent CSV files without a header
+
+* Scripts
+** bareCsvToDlog.sh
+   - Converts a bare csv file to a dlog file
+   - input: ./bareCsvToDlog.sh filename.csv period
+     - period is the time between samples in seconds
+   - Output: out.dlog
+
+** bareCsvDisplayMeanPeriod.sh
+   - This script prints mean period of sampling from a bareCsv file
+   - input: ./bareCsvDisplayMeanPeriod.sh filename.csv
+   - Output: Mean period in seconds
+
+** csvToBareCsv.sh
+   - This script converts a default KeySight csv file to a csv without readers readable by octave/matlab and prints the period of the sampling
+   - input: ./csvToBareCsv.sh filename.csv
+   - Output: out_bare.csv plus period of sampling
+   
+** csvToDlog.sh
+   - This script converts a default KeySight csv file to a KeySight dlog
+   - input: ./csvToDlog.sh filename.csv
+   - Output: out.dlog
+  
+** dlogToCsv.sh
+    - This script converts a default KeySight dlog file to a KeySight csv
+    - Input: filename.dlog
+    - Output: out.csv and out_bare.csv
+
+** csvTrim.sh
+   - 
+
+
+** TODO csvEDIT.py
+** TODO csvAlign/csvAlign.py
