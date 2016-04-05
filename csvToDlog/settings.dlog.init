@@ -1,0 +1,52 @@
+<!-- N6700X dlog settings -->
+<dlog>
+	<channel id="1">
+		<curr_trig_lev>0</curr_trig_lev>
+		<volt_trig_lev>0</volt_trig_lev>
+		<curr_trig_slope>0</curr_trig_slope>
+		<volt_trig_slope>0</volt_trig_slope>
+		<sense_volt>0</sense_volt>
+		<sense_curr>1</sense_curr>
+		<volt_range>0</volt_range>
+		<curr_range>0</curr_range>
+		<curr_auto_range>0</curr_auto_range>
+		<volt_auto_range>0</volt_auto_range>
+		<ident>
+			<model>N6781A</model>
+			<option>
+				<1ua>0</1ua>
+				<2ua>0</2ua>
+				<lga>0</lga>
+				<relay>0</relay>
+				<reverse>0</reverse>
+			</option>
+		</ident>
+	</channel>
+	<frame>
+		<sense_minmax>0</sense_minmax>
+		<trig_source>1</trig_source>
+		<time>30</time>
+		<offset>0</offset>
+		<tint>@@</tint>
+		<date>"Thu Feb  4 16:49:54 2016"</date>
+	</frame>
+	<gui_chan id="1">
+		<volt_trace>0</volt_trace>
+		<curr_trace>1</curr_trace>
+		<volt_gain>2</volt_gain>
+		<volt_offset>0</volt_offset>
+		<curr_gain>0.2</curr_gain>
+		<curr_offset>0.039850563</curr_offset>
+		<power_trace>0</power_trace>
+		<power_gain>0.050000001</power_gain>
+		<power_offset>0</power_offset>
+	</gui_chan>
+	<gui_frame>
+		<horiz_gain>5</horiz_gain>
+		<horiz_offset>0</horiz_offset>
+		<date_time>1</date_time>
+		<base_filename>"Internal:\unicamp\pusch_15_1rb.dlog"</base_filename>
+		<marker1_pos>6.1540146</marker1_pos>
+		<marker2_pos>21.163807</marker2_pos>
+	</gui_frame>
+</dlog>

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#TODO: Receive name as parameter
+
+if [ $# -ne 1 ]; then
+    echo "Usage: "$0" filename.csv"
+
+else
+    #Pre-processing
+    period=`(sed -n '2,2 p' $1 | cut -d ':' -f2) | tr -d '\n' | tr -d '\r'`  #Gets the time between samplings
+
+    cp $1 PROCESSED_CSV.csv
+    sed -i '1,4d' PROCESSED_CSV.csv
+    
+    #Calling Octave for processing
+    octave -q csvstats.m
+    
+    #MountingXML
+fi

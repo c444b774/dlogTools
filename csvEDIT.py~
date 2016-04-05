@@ -1,0 +1,51 @@
+import csv
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+# with open("trimmed.csv", 'r') as dest_f:
+#     data_it =  .reader(dest_f, delimiter = ',')
+#     data = [float(data) for data in data_it]
+#     type data_it
+# A = np.asarray(data)
+
+a,b = np.loadtxt('trimmed.csv', delimiter=',', usecols=(0,1), unpack=True, dtype=float)
+A=[a,b]
+
+
+a,b = np.loadtxt('trimmed.csv', delimiter=',', usecols=(0,1), unpack=True, dtype=float)
+B=[a,b]
+
+search_space = 10E-3 #s
+period = 2.048E-5 #s
+desloc_lim = int(math.ceil(search_space/period))
+search_depth = desloc_lim*5
+
+start_s = desloc_lim
+
+print "\tLim Desl: %d\n\tSearch Depth %d" % (desloc_lim,search_depth)
+print "\tSizeofB: %d" % len(B[0])
+sq_error = []
+for offset in range(-desloc_lim,desloc_lim):
+    v = 0
+    for i in range(search_depth):
+        a = A[1][(start_s+i)]
+        b = B[1][(start_s+offset+i)]
+        v += math.pow(a-b,2) 
+    sq_error = sq_error + [v]
+
+index_min = sq_error.index(min(sq_error))
+desloc_time = index_min*period
+
+print "Desl indice: %d  -- tempo %d" % (index_min, desloc_time)
+
+
+B[0] = [ x+desloc_time for x in B[0] ] 
+#print B
+
+plt.plot(B[1])
+plt.show()
+
+
+
+

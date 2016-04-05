@@ -1,0 +1,18 @@
+arg_list = argv ();
+filename_in = arg_list{1};
+period = arglist{2};
+filename_out = arglist{3}
+
+id = fopen(filename_in, "r")
+[number_values, r] = fread(id,1,"uint64", 0, "ieee-be")
+
+[v, count] = fread(id,Inf,"float32", 0, "ieee-be");
+disp "Total read: "count" Supposed: "number_values
+
+for i = 1:count
+    v(i,2) = (i-1)*period;
+endfor
+
+v = [v(:,2);v(:,1)]
+
+csvwrite(filename_out, v)
