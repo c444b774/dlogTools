@@ -9,7 +9,7 @@ else
     cp $1 $temp_file
     period=`grep -aoe "<tint>.*</tint>" $temp_file` 
     period=`echo $period | cut -d ">" -f2 | cut -d "<" -f1`
- 
+
     time=`grep -aoe "<time>.*</time>" $temp_file` 
     time=`echo $time | cut -d ">" -f2 | cut -d "<" -f1`
 

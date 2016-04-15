@@ -45,3 +45,8 @@
 
 ** TODO csvEDIT.py
 ** TODO csvAlign/csvAlign.py
+** 
+
+* @csvStatistics/
+** csvCutMin
+** csvstats
