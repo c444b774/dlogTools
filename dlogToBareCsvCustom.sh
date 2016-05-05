@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [ $# -ne 1 ]; then
+if [ $# -ne 2 ]; then
     echo "This script converts a default KeySight dlog file to a KeySight csv"
     echo "Output: out.csv and out_bare.csv"
-    echo "Usage: "$0" filename.csv"
+    echo "Usage: "$0" filename.dlog output.csv"
 else
     temp_file="temp.bin"
     cp $1 $temp_file
@@ -13,7 +13,7 @@ else
     time=`grep -aoe "<time>.*</time>" $temp_file` 
     time=`echo $time | cut -d ">" -f2 | cut -d "<" -f1`
 
-    echo "Time: "$time" Period: "$period" Values: `echo $time/$period | bc`"
+    echo "Time: "$time" Period: "$period
 
     killpoint=1
     while read line
@@ -23,17 +23,13 @@ else
 	      then
 	          break
 	      fi
-	      killpoint=`expr $killpoint + 1`
+	      (( killpoint += 1 ))
     done < $temp_file
 
     cm="1,$killpoint""d"
-    echo $cm
+#    echo $cm
     sed -i $cm $temp_file
 
-    octave -q ./dlogToCsv/dlogToCsv.m $temp_file $period out_bare.csv
-    cp ./dlogToCsv/csv_header.init ./out.csv
-    sed -i 's/@@/'$period'/' out.csv
-
-    cat ./out_bare.csv >> out.csv
+    octave -q ~/working_now/MotoCsvKey/dlogToCsv/dlogToCsv.m $temp_file $period $2
     rm -rf temp.bin
 fi

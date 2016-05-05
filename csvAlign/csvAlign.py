@@ -42,7 +42,7 @@ period = 2.048E-5 #s
 desloc_lim = int(math.ceil(search_space/period))
 search_depth = desloc_lim #Ate onde olhar para minimizacao?
 
-start_s = desloc_lim  #Posicao para inicia pesquisa
+start_s = desloc_lim  #Posicao para inicio da pesquisa
 
 print "\tLim Desl: %d\n\tSearch Depth %d" % (desloc_lim,search_depth)
 print "\tSizeofB: %d" % len(B[0])
